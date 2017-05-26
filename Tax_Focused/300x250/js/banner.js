@@ -36,7 +36,8 @@ function initCSS() {
     TweenLite.set($("#red-gradient"), {autoAlpha:0, rotation:70, x:-210, y: 60, scale:0.8});
     TweenLite.set($("#partnership-white-shape-small"), {y:-9})
     TweenLite.set($("#logos-container"), {y:-4, scale:1.05});
-    TweenLite.set(".bg-wrapper", {perspective:800});
+    //TweenLite.set("#messaging-frame-03", {alpha:0});
+
 
     $( ".banner" ).hover(
         function() {
@@ -96,13 +97,12 @@ function startAnimation() {
     tl = new TimelineLite();
 
     //FRAME 01/INTRO ------------------------------------------------
-    tl.from(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, "0");
-    tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
+    // tl.from(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, "0");
+    // tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
 
-    tl.from("#messaging-frame-01", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "4");
+    tl.from("#messaging-frame-00", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "1");
     tl.from(".qantas-logo-colour", 1.8, {alpha:0, y:-10, ease: Power1.easeInOut}, "1");
     tl.from(".logo-qantas", 2, {alpha:0, ease: Power1.easeInOut}, "1");
-    tl.call(countDown, [900, 999, 000, ".hundreds-countdown"], this, "3.5");
     tl.from(".terms", 1.2, {alpha: 0, ease: Power1.easeOut}, "4.6");
 
     tl.from("#partnership-white-shape-small", 2.5, {autoAlpha:0.4, rotation:90, x:55, scaleY:1.2, ease: Power1.easeOut}, "0.2");
@@ -128,29 +128,36 @@ function startAnimation() {
 
     tl.to("#red-gradient", 3.5, {autoAlpha:1, rotation:34, x:-160, y: -225, scale:0.8, ease: Power1.easeInOut}, "0"); //rotation:70,
 
-    //FRAME 02  ------------------------------------------------
-    tl.add("frame02", 7);
 
-    tl.to("#messaging-frame-01", 1.2, {alpha: 1, y: -23, ease: Power1.easeInOut}, "frame02+=.3");
-    tl.from("#messaging-frame-01b", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "frame02+=.3");
-    tl.staggerFrom(bonus, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=0.7");
+    //IMAGE FRAME  ------------------------------------------------
+    tl.add("imageFrame", 6);
+    tl.to("#messaging-frame-00", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "imageFrame");
+    tl.from(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, "imageFrame");
+
+    //FRAME 02  ------------------------------------------------
+    tl.add("frame02", 8);
+    tl.to(".bg-image-01", 1, {alpha:0, ease:Power1.easeInOut}, "frame02");
+    tl.from("#messaging-frame-01", 1.2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "frame02+=.3");
+    tl.call(countDown, [900, 999, 000, ".hundreds-countdown"], this, "frame02+=.3");
+
+
+    //FRAME 02b  ------------------------------------------------
+    tl.add("frame02b", 12);
+    tl.to("#messaging-frame-01", 1.2, {y: '-=20', ease: Power1.easeInOut}, "frame02b");
+    tl.from("#messaging-frame-01b", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "frame02b+=.2");
+    tl.staggerFrom(bonus, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02b+=0.7");
 
     //FRAME 03  ------------------------------------------------
-    tl.add("frame03", 10);
+    tl.add("frame03", 15);
     tl.to("#messaging-frame-01", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
     tl.to("#messaging-frame-01b", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
     tl.from("#messaging-frame-03", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame03+=.5");
     tl.staggerFrom(june, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame03+=0.9");
     tl.staggerFrom(tax, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame03+=1.3");
 
-    //FRAME 04  ------------------------------------------------
-    // tl.add("frame04", 14);
-    // tl.to("#messaging-frame-02", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "frame04");
-    // tl.from("#messaging-frame-03", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame04+=.4");
-
 
     //END FRAME  ------------------------------------------------
-    tl.add("endframe", 14);
+    tl.add("endframe", 21);
 
     tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "endframe");
     tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");

@@ -241,6 +241,20 @@ h4 {
   font-weight: 600;
 }
 
+#messaging-frame-00 {
+  position: absolute;
+  z-index: 200;
+  width: 260px;
+  top: 55px;
+  left: 20px;
+    p {
+      font-size:23px;
+      line-height:25px;
+      z-index:150;
+      -webkit-font-smoothing: antialiased;
+    }
+}
+
 #messaging-frame-02 {
   position: absolute;
   z-index: 200;

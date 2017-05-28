@@ -114,11 +114,13 @@ h4 {
 
 .container {
     display: none;
-    width: ($width)+px;
-    height: ($height)+px;
+    width: ($width - 2)+px;
+    height: ($height - 2)+px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
+    overflow: hidden;
+    border: 1px solid #e2e2e2;
 }
 
 .loader {
@@ -241,7 +243,7 @@ h4 {
   font-weight: 600;
 }
 
-#messaging-frame-00 {
+#messaging-frame-01 {
   position: absolute;
   z-index: 200;
   width: 260px;
@@ -249,7 +251,7 @@ h4 {
   left: 20px;
     p {
       font-size:23px;
-      line-height:25px;
+      line-height: 1.15;
       z-index:150;
       -webkit-font-smoothing: antialiased;
     }
@@ -259,7 +261,7 @@ h4 {
   position: absolute;
   z-index: 200;
   width: 260px;
-  top: 35px;
+  top: 45px;
   left: 20px;
     p {
       font-size:23px;
@@ -273,7 +275,21 @@ h4 {
   position: absolute;
   z-index: 200;
   width: 260px;
-  top: 35px;
+  top: 55px;
+  left: 20px;
+    p {
+      font-size:23px;
+      line-height:25px;
+      z-index:150;
+      -webkit-font-smoothing: antialiased;
+    }
+}
+
+#messaging-frame-04 {
+  position: absolute;
+  z-index: 200;
+  width: 260px;
+  top: 85px;
   left: 20px;
     p {
       font-size:23px;

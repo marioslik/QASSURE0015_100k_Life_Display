@@ -89,7 +89,7 @@ function startAnimation() {
 
     //FRAME 01/INTRO ------------------------------------------------
     // tl.from(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, "0");
-    tl.fromTo(".bg-image-01", 6, {y:-50}, {y:0}, "0")
+    //tl.fromTo(".bg-image-01", 6, {y:-50}, {y:0}, "0")
     tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
 
     tl.from("#messaging-frame-01", 2, {alpha: 0, y:-10, ease: Power1.easeInOut}, "4");
@@ -124,6 +124,8 @@ function startAnimation() {
     tl.to("#blue-shape", 1, {alpha:1, rotation: -90, scaleX: 1.3, scaleY: 1.3, x: -45, y: 100, ease: Power1.easeInOut}, ".3");
     tl.to("#mask-shape", 1, {rotation: 0, scaleX: 3.65, scaleY: 3.65, x: -1756, y: -1315, ease: Power3.easeInOut}, "1.1");
     tl.to("#blue-shape", 0.4, {rotation: -180, scaleX: 1.3, scaleY: 1.3, x: -290, y: 280, ease: Power2.easeIn}, "1.3");
+    //tl.to("#partnership-white-shape-small", 1.5, {x:107}, ".5");
+
 
     //FRAME 02  ------------------------------------------------
     tl.add("frame02", 7);

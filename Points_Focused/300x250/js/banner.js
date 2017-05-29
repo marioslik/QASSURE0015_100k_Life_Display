@@ -101,8 +101,8 @@ function startAnimation() {
     //FRAME 01/INTRO ------------------------------------------------
 
 
-    tl.from("#messaging-frame-01", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "2");
-    tl.staggerFrom(income, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "2");
+    tl.from("#messaging-frame-01", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "1");
+    //tl.staggerFrom(income, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "2");
     tl.from(".qantas-logo-colour", 1.8, {alpha:0, y:-10, ease: Power1.easeInOut}, "1");
     tl.from(".logo-qantas", 2, {alpha:0, ease: Power1.easeInOut}, "1");
     tl.from(".terms", 1.2, {alpha: 0, ease: Power1.easeOut}, "4.6");
@@ -131,36 +131,37 @@ function startAnimation() {
     tl.to("#red-gradient", 3.5, {autoAlpha:1, rotation:34, x:-160, y: -225, scale:0.8, ease: Power1.easeInOut}, "0"); //rotation:70,
 
     //FRAME 02  ------------------------------------------------
-    tl.add("frame02", 5);
+    tl.add("frame02", 3);
     tl.from("#messaging-frame-02", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "frame02+=.3");
-    tl.staggerFrom(holiday, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=.4");
+    tl.fromTo(".bg-image-01", 1.5, {alpha: 0, ease: Power1.easeIn}, {alpha: 0.5, ease: Power1.easeOut}, "frame02+=.3");
+    //tl.staggerFrom(holiday, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=.4");
 
 
     // //FRAME 03  ------------------------------------------------
-    tl.add("frame03", 10);
+    tl.add("frame03", 4.5);
     tl.to("#messaging-frame-01", 1.2, {y: '-=0', alpha:0, ease: Power1.easeInOut}, "frame03+=.3");
-    tl.to("#messaging-frame-02", 1.5, {y: '-=90', ease: Power1.easeInOut}, "frame03+=.5");
-    tl.from(".bg-image-01", 1.5, {alpha: 0, ease: Power1.easeIn}, "frame03+=.5");
+    tl.to("#messaging-frame-02", 1.5, {y: '-=85', ease: Power1.easeInOut}, "frame03+=.5");
+    tl.to(".bg-image-01", 1.5, {alpha: 1, ease: Power1.easeOut}, "frame03");
 
 
     // //FRAME 04  ------------------------------------------------
-    tl.add("frame04", 17);
+    tl.add("frame04", 6);
     tl.to("#messaging-frame-02", 1.5, {alpha: 0, ease: Power1.easeInOut}, "frame04");
-    tl.to(".bg-image", 1.5, {y:'-=60', ease:Power1.easeInOut}, "frame04");
+    tl.to(".bg-image", 1.5, {y:'-=60', ease:Power1.easeInOut}, "frame04+=.3");
 
 
 
 
-    // //FRAME 05  ------------------------------------------------
-    tl.add("frame05", 21);
-    tl.to(".bg-image", 1, {autoAlpha:0, ease:Power1.easeInOut}, "frame05");
-    tl.from("#messaging-frame-03", 1.2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame05+=0.5");
-    tl.staggerFrom(strike, 0.5, {alpha:0, x:-100, scaleX:1.2, textShadow:"-5px 0px 15px rgba(255, 255, 255, 1)", transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.01, "frame05+=1");
+    //FRAME 05  ------------------------------------------------
+    tl.add("frame05", 7.5);
+    tl.to(".bg-image", 0.75, {autoAlpha:0, ease:Power1.easeInOut}, "frame05");
+    tl.from("#messaging-frame-03", 1, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame05+=.3");
+    //tl.staggerFrom(strike, 0.4, {alpha:0, x:-100, scaleX:2, textShadow:"-5px 0px 15px rgba(255, 255, 255, 1)", transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.01, "frame05+=1");
 
 
 
     //END FRAME  ------------------------------------------------
-    tl.add("endframe", 27);
+    tl.add("endframe", 9.75);
 
     tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "endframe");
     tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");

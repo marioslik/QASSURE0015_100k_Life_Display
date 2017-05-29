@@ -138,24 +138,26 @@ function startAnimation() {
     tl.add("frame02", 4);
     tl.to("#messaging-frame-01", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame02");
     tl.from("#messaging-frame-02", 1.2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame02+=.3");
-    tl.staggerFrom(qantasassure, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=.5");
+    //tl.staggerFrom(qantasassure, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=.4");
 
 
 
     //FRAME 03  ------------------------------------------------
-    tl.add("frame03", 9);
+    tl.add("frame03", 7);
     tl.to("#messaging-frame-02", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
     tl.from("#messaging-frame-03", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame03+=.5");
+    tl.staggerFrom(tax, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame03+=.9");
 
 
     //FRAME 04  ------------------------------------------------
-    tl.add("frame04", 15);
+    tl.add("frame04", 10);
     tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame04+=.3");
     tl.from("#messaging-frame-04", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame04+=.5");
 
 
+
     //END FRAME  ------------------------------------------------
-    tl.add("endframe", 19);
+    tl.add("endframe", 11.85);
 
     tl.to("#messaging-frame-04", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "endframe");
     tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");

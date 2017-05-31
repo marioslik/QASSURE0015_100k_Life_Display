@@ -5,6 +5,8 @@ var dcLogo;
 var bgExit;
 var tl;
 var preload;
+var isDesktop = true;
+var md = new MobileDetect(window.navigator.userAgent);
 
 $(document).ready(function () {
 
@@ -22,9 +24,74 @@ $(document).ready(function () {
         console.log("loaded");
         imagesLoaded = true;
         initCSS();
-        startAnimation()
+        initAnimation();
+        //startAnimation();
     });
 });
+
+function iOSversion() {
+ if (/iP(hone|od|ad)/.test(navigator.platform)) {
+   var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+   return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+ }
+}
+
+function initAnimation() {
+
+    var video = document.getElementById('video-el');
+    window.makeVideoPlayableInline(video);
+
+    if (md.phone() || md.tablet()) {
+        isDesktop = false;
+        // $('#video').hide();
+
+        if(iOSversion()[0] > 9)
+            isDesktop = true;
+            //alert(iOSversion());
+            TweenLite.set("#video", {alpha:0});
+            TweenLite.set(".bg-image", {alpha:1, zIndex:110});
+        }
+}
+
+// console.log(iOSversion())
+
+if (isDesktop) {
+    videoSetup();
+} else {
+    initCSS();
+    //TweenLite.set(".bg-image", {alpha:1, zIndex:102});
+    //start();
+    startAnimation();
+}
+
+function videoSetup() {
+
+  console.log('video setup')
+
+    $('#video').show();
+    var vid = document.getElementById('video-el');
+    $('#video video').load();
+    $('#video video').bind('loadeddata', function (e) {
+
+        if (vid.readyState == 3 || vid.readyState == 4 || vid.readyState == 2 || vid.readyState == 'complete' || vid.readyState == 'loaded') {
+
+            //$('.bg-image-01').hide();
+            initCSS();
+            startAnimation();
+
+            console.log('start')
+
+            $('#video-el').get(0).play();
+        }
+    });
+
+    $('#video video').bind('error', function (e) {
+        $('#video').hide();
+        initCSS();
+        startAnimation();
+    });
+
+}
 
 function initCSS() {
 
@@ -97,8 +164,10 @@ function startAnimation() {
     tl = new TimelineLite();
 
     //FRAME 01/INTRO ------------------------------------------------
-    tl.from(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, "0");
-    tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
+    tl.from(".bg-image-01", 0, {alpha: 0, ease: Power1.easeInOut}, "0");
+    tl.from(".bg-image", 0, {alpha: 0, ease: Power1.easeInOut}, "0");
+    tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.15");
+    tl.to("#video", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
 
     tl.from("#messaging-frame-01", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "4");
     tl.from(".qantas-logo-colour", 1.8, {alpha:0, y:-10, ease: Power1.easeInOut}, "1");

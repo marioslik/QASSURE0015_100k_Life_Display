@@ -5,6 +5,9 @@ var dcLogo;
 var bgExit;
 var tl;
 var preload;
+var isDesktop = true;
+var md = new MobileDetect(window.navigator.userAgent);
+var video;
 
 $(document).ready(function () {
 
@@ -22,9 +25,77 @@ $(document).ready(function () {
         console.log("loaded");
         imagesLoaded = true;
         initCSS();
-        startAnimation()
+        initAnimation();
+        //startAnimation()
     });
 });
+
+function iOSversion() {
+ if (/iP(hone|od|ad)/.test(navigator.platform)) {
+   var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+   return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+ }
+}
+
+function initAnimation() {
+
+    video = document.getElementById('video-el');
+    window.makeVideoPlayableInline(video);
+
+    if (md.phone() || md.tablet()) {
+        isDesktop = false;
+        // $('#video').hide();
+
+        if(iOSversion()[0] > 9)
+            isDesktop = true;
+            //alert(iOSversion());
+            TweenLite.set("#video", {autoAlpha:0});
+            TweenLite.set(".bg-image", {alpha:1, zIndex:110});
+        }
+}
+
+// console.log(iOSversion())
+
+if (isDesktop) {
+    videoSetup();
+} else {
+    initCSS();
+    //TweenLite.set(".bg-image", {alpha:1, zIndex:102});
+    //start();
+    startAnimation();
+}
+
+function videoSetup() {
+
+  console.log('video setup')
+
+    $('#video').show();
+    var vid = document.getElementById('video-el');
+    $('#video video').load();
+    $('#video video').bind('loadeddata', function (e) {
+
+        if (vid.readyState == 3 || vid.readyState == 4 || vid.readyState == 2 || vid.readyState == 'complete' || vid.readyState == 'loaded') {
+
+            //$('.bg-image-01').hide();
+            initCSS();
+            startAnimation();
+
+            console.log('start')
+
+            //$('#video-el').get(0).play();
+
+
+        }
+    });
+
+    $('#video video').bind('error', function (e) {
+        $('#video').hide();
+        //$('.bg-image-01').show();
+        initCSS();
+        startAnimation();
+    });
+
+}
 
 function initCSS() {
 
@@ -101,6 +172,7 @@ function startAnimation() {
     // tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
 
     tl.from("#messaging-frame-00", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "1");
+    tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0, ease: Power1.easeOut}, "2");
     tl.from(".qantas-logo-colour", 1.8, {alpha:0, y:-10, ease: Power1.easeInOut}, "1");
     tl.from(".logo-qantas", 2, {alpha:0, ease: Power1.easeInOut}, "1");
     tl.from(".terms", 1.2, {alpha: 0, ease: Power1.easeOut}, "4.6");
@@ -131,13 +203,25 @@ function startAnimation() {
 
     //IMAGE FRAME  ------------------------------------------------
     tl.add("imageFrame", 3.5);
-    tl.to("#messaging-frame-00", 1.5, {alpha: 0, y: '+=0', ease: Power1.easeInOut}, "imageFrame+=0.75");
-    tl.from(".bg-image-01", 1.5, {alpha: 0, ease: Power1.easeIn}, "imageFrame");
+    //tl.to("#messaging-frame-00", 1.5, {alpha: 0, y: '+=0', ease: Power1.easeInOut}, "imageFrame");
+    tl.to('#red-gradient', 0.8, {alpha:0, ease:Power1.easeOut}, 'imageFrame+=.3')
+    tl.to('#solid-red-base2', 4, {x:660, ease:Power1.easeOut}, 'imageFrame+=.3')
+    tl.to("#messaging-frame-00", 1, {alpha: 0, y: '+=0', ease: Power1.easeIn}, "imageFrame+=0.5");
+    tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0.5, ease: Power1.easeOut}, "imageFrame");
+
+    //IMAGE FRAME02  ------------------------------------------------
+    tl.add("imageFrame2", 4);
+    // tl.to("#messaging-frame-00", 1, {alpha: 0, y: '+=0', ease: Power1.easeIn}, "imageFrame2+=0.5");
+    tl.to(".bg-image-01", 1, {alpha: 1, ease: Power1.easeInOut}, "imageFrame2+=0.5");
+    tl.from("#video", 0.5, {alpha: 0, ease: Power1.easeInOut, onComplete:function(){video.play()}}, "imageFrame2");
+    //tl.to('#video-el',{}, "imageFrame2+=0.25");
 
     //FRAME 02  ------------------------------------------------
     tl.add("frame02", 6);
-    tl.to(".bg-image-01", 1, {alpha:0, ease:Power1.easeInOut}, "frame02");
-    tl.from("#messaging-frame-01", 1.2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "frame02+=.3");
+    tl.to(".bg-image-01", 1, {alpha:0, ease:Power1.easeIn}, "frame02");
+    tl.to("#video", 1, {alpha:0, ease:Power1.easeIn}, "frame02");
+    tl.to('#red-gradient', 1, {alpha:1, ease:Power1.easeInOut}, 'frame02+=.3')
+    tl.from("#messaging-frame-01", 1.2, {alpha: 0, y: 20, ease: Power1.easeIn}, "frame02");
     tl.call(countDown, [900, 999, 000, ".points-copy .hundreds-countdown"], this, "frame02+=.3");
 
 
@@ -148,7 +232,7 @@ function startAnimation() {
     //tl.staggerFrom(bonus, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02b+=0.7");
 
     //FRAME 03  ------------------------------------------------
-    tl.add("frame03", 9.5);
+    tl.add("frame03", 9);
     tl.to("#messaging-frame-01", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
     tl.to("#messaging-frame-01b", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
     tl.from("#messaging-frame-03", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame03+=.5");
@@ -157,7 +241,7 @@ function startAnimation() {
 
 
     //END FRAME  ------------------------------------------------
-    tl.add("endframe", 14);
+    tl.add("endframe", 13);
 
     tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "endframe");
     tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");

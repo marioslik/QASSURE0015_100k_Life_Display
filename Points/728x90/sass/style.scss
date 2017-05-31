@@ -158,14 +158,19 @@ h4 {
     text-rendering: optimizeLegibility;
 }
 
+.bold {
+  display: inline;
+  font-weight: 600;
+}
+
 #messaging-frame-01 {
     position: absolute;
     z-index: 200;
     width: 500px;
-    top: 13px;
+    top: 33px;
     left: 22px;
     text-align: left;
-    color:#ffffff;
+    color: #fff;
     p {
         font-size: 20px;
         line-height: 15px;
@@ -180,11 +185,11 @@ h4 {
     }
     .points-copy {
         -webkit-font-smoothing: initial;
-        position:relative;
-        font-size:40px;
-        font-weight:600;
-        bottom:2px;
-        left:-29px;
+        position: relative;
+        font-size: 28px;
+        font-weight: 600;
+        top: -27px;
+        left: 209px;
     }
     .thousands-countdown,
     .hundreds-countdown {
@@ -222,12 +227,38 @@ h4 {
     }
     #qantas-points {
         position: absolute;
-        top:32px;
-        left:117px;
+        top: 0px;
+        left: 335px;
+    }
+}
+
+#messaging-frame-01b {
+    position: absolute;
+    z-index: 200;
+    width: 500px;
+    top: 40px;
+    left: 22px;
+    text-align: left;
+    p {
+        font-size:20px;
+        line-height:23px;
     }
 }
 
 #messaging-frame-02 {
+    position: absolute;
+    z-index: 200;
+    width: 500px;
+    top: 15px;
+    left: 22px;
+    text-align: left;
+    p {
+        font-size:20px;
+        line-height:23px;
+    }
+}
+
+#messaging-frame-03 {
     position: absolute;
     z-index: 200;
     width: 500px;
@@ -248,7 +279,55 @@ h4 {
     color: #ffffff;
     p {
         font-size: 19px;
+        line-height: 1.3;
     }
+
+    .points-copy2 {
+        -webkit-font-smoothing: initial;
+        position: relative;
+        left: -11px;
+        top: -28px;
+        font-size: 23px;
+        font-weight: 600;
+        display: inline-block;
+    }
+    .points-copy-left {
+        position:absolute;
+        left:0px;
+        width:60px;
+    }
+    .thousands-countdown,
+    .hundreds-countdown {
+        display: inline;
+    }
+    .thousands-countdown {
+        position: absolute;
+        text-align: right;
+        right: -119px;
+    }
+    .comma-countdown {
+        position: relative;
+        display: inline;
+        right: -125px;
+    }
+    .hundreds-countdown {
+        position: absolute;
+        text-align: left;
+        left: 131px;
+        top:0px;
+    }
+    #qantas-points2 {
+        display: inline-block;
+        position: relative;
+        left: 154px;
+        font-size: 23px;
+        font-weight: 600;
+        top: -28px;
+    }
+}
+
+#subtext {
+  opacity: 0;
 }
 
 .messaging-bracket {
@@ -299,8 +378,8 @@ h4 {
 
 .logo-partner {
     position: absolute;
-    top: -34px;
-    left: 11px;
+    top: -17px;
+    left: 16px;
     z-index: 400;
     height: 23px;
     overflow: hidden;
@@ -316,7 +395,7 @@ h4 {
 #cta-button {
     position: absolute;
     display: block;
-    right: -141px;
+    right: -242px;
     top: 10px;
     z-index: 300;
 }

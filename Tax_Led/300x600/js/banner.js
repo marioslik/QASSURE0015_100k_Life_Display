@@ -113,7 +113,7 @@ function startAnimation() {
         // tl.to(".bg-image", 1, {alpha:0, ease:Power1.easeInOut}, "3.5");
         //Base Gradient
         tl.from("#messaging-frame-00", 2, {alpha: 0, y: -10, ease: Power1.easeOut}, "1");
-        tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0.5, ease: Power1.easeOut}, "2");
+        tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0, ease: Power1.easeOut}, "2");
         //tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0.5, ease: Power1.easeOut}, "2");
         tl.to("#red-grad-values", 3, {attr:{cx:150, cy:500, r:463}, ease:Power2.easeInOut}, "0");
         tl.to("#base-grad-stop-01", 1, {stopOpacity:0, ease:Power2.easeOut}, "0");
@@ -145,30 +145,35 @@ function startAnimation() {
 
         //IMAGE FRAME  ------------------------------------------------
         tl.add("imageFrame", 3.5);
+        tl.to('#red-gradient', 0.8, {alpha:0, ease:Power1.easeOut}, 'imageFrame+=.3')
+        tl.to('#solid-red-base2', 4, {x:1060, ease:Power1.easeOut}, 'imageFrame+=.3')
+        tl.to("#messaging-frame-00", 1, {alpha: 0, y: '+=0', ease: Power1.easeIn}, "imageFrame+=0.5");
+        tl.fromTo(".bg-image-01", 1, {alpha: 0, ease: Power1.easeIn}, {alpha: 0.5, ease: Power1.easeOut}, "imageFrame");
         //tl.to("#messaging-frame-00", 1.5, {alpha: 0, y: '+=0', ease: Power1.easeInOut}, "imageFrame+=0.75");
         //tl.from(".bg-image-01", 1.5, {alpha: 0, ease: Power1.easeIn}, "imageFrame");
 
         //IMAGE FRAME02  ------------------------------------------------
         tl.add("imageFrame2", 4);
-        tl.to("#messaging-frame-00", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "imageFrame2+=.5");
-        tl.to(".bg-image-01", 1, {alpha: 0, ease: Power1.easeInOut}, "imageFrame2+=0.5");
+        //tl.to("#messaging-frame-00", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "imageFrame2+=.5");
+        tl.to(".bg-image-01", 1, {alpha: 1, ease: Power1.easeInOut}, "imageFrame2+=0.5");
 
         //FRAME 02  ------------------------------------------------
-        tl.add("frame02", 5);
+        tl.add("frame02", 6);
         tl.to(".bg-image-01", 1, {alpha:0, ease:Power1.easeInOut}, "frame02");
-        tl.from("#messaging-frame-01", 1, {alpha: 0, y: 20, ease: Power1.easeIn}, "frame02+=0.3");
+        tl.to('#red-gradient', 1, {alpha:1, ease:Power1.easeInOut}, 'frame02+=.3');
+        tl.from("#messaging-frame-01", 1, {alpha: 0, y: 20, ease: Power1.easeIn}, "frame02");
         tl.call(countDown, [900, 999, 000, ".points-copy .hundreds-countdown"], this, "frame02");
 
         //tl.from("#messaging-frame-01b", 1.2, {alpha: 0, y: 0, ease: Power1.easeInOut}, "frame02+=.3");
         //tl.staggerFrom(bonus, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=0.7");
 
         //FRAME 02b  ------------------------------------------------
-        tl.add("frame02b", 7);
+        tl.add("frame02b", 8);
         tl.to("#messaging-frame-01", 1.2, {y: '-=00', ease: Power1.easeInOut}, "frame02b");
 
 
         //FRAME 03  ------------------------------------------------
-        tl.add("frame03", 8);
+        tl.add("frame03", 9);
 
         tl.to("#messaging-frame-01", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
         tl.to("#messaging-frame-01b", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");

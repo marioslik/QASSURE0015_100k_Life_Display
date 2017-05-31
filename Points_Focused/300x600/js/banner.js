@@ -149,23 +149,23 @@ function startAnimation() {
         //FRAME 03  ------------------------------------------------
         tl.add("frame03", 4.5);
         tl.to("#messaging-frame-01", 1.2, {y: '-=0', alpha:0, ease: Power1.easeInOut}, "frame03+=.3");
-        tl.to("#messaging-frame-02", 1.5, {y: -205, ease: Power1.easeInOut}, "frame03+=.5");
-        tl.to(".bg-image-01", 1.5, {alpha: 1, ease: Power1.easeOut}, "frame03");
+        tl.to("#messaging-frame-02", 1.2, {y: '-=0', alpha:0, ease: Power1.easeInOut}, "frame03+=.3");
+        tl.to(".bg-image-01", 1.2, {alpha: 0, ease: Power1.easeInOut}, "frame03+=.3");
 
         // //FRAME 04  ------------------------------------------------
-        tl.add("frame04", 6.5);
-        tl.to("#messaging-frame-02", 1.5, {alpha: 0, ease: Power1.easeInOut}, "frame04");
+        // tl.add("frame04", 6.5);
+        // tl.to("#messaging-frame-02", 1.5, {alpha: 0, ease: Power1.easeInOut}, "frame04");
         //tl.to(".bg-image", 1.5, {y:'-=60', ease:Power1.easeInOut}, "frame04+=.3");
 
         //FRAME 05  ------------------------------------------------
-        tl.add("frame05", 7.5);
-        tl.to(".bg-image", 0.75, {autoAlpha:0, ease:Power1.easeInOut}, "frame05");
-        tl.from("#messaging-frame-03", 1, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame05+=.3");
+        tl.add("frame05", 5.5);
+        //tl.to(".bg-image", 0.75, {autoAlpha:0, ease:Power1.easeInOut}, "frame05");
+        tl.from("#messaging-frame-03", 1, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame05");
         //tl.staggerFrom(strike, 0.4, {alpha:0, x:-100, scaleX:2, textShadow:"-5px 0px 15px rgba(255, 255, 255, 1)", transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.01, "frame05+=1");
 
 
         //END FRAME  ------------------------------------------------
-        tl.add("endframe", 9.75);
+        tl.add("endframe", 7.25);
 
         tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: "+=20", ease: Power1.easeInOut}, "endframe");
         tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");

@@ -34,7 +34,7 @@ function initCSS() {
     TweenLite.set($(".shapes"), {rotation: 160, transformOrigin: "50% 50%", overwrite: "none", force3D: false});
     TweenLite.set($("#red-gradient"), {autoAlpha:0, rotation:50, x:-214, y: -310, transformOrigin:"50% 50%", scale:0.7}); // rotation:35, autoAlpha:1, x:-214, y:-300,
     TweenLite.set($("#partnership-white-shape-small"), {x:137, y:106, scaleX:0.8, scaleY:1});
-    TweenLite.set($(".qantas-logo"), {alpha:0});
+    TweenLite.set($(".logo-qantas"), {scale:1.2, x:-14});
     TweenLite.set($("#text-base-shape"), {rotation:0, autoAlpha:1, x:146, y:-196, scaleX:0.9, scaleY:0.8}); // x:-349,
 
     $( ".banner" ).hover(
@@ -85,6 +85,14 @@ function startAnimation() {
     bannerWidth = $(".container").width();
     bannerHeight = $(".container").height();
 
+    var mySplitText = new SplitText("#bonus", {type:"words,chars"});
+    var mySplitText2 = new SplitText("#june", {type:"words,chars"});
+    var mySplitText3 = new SplitText("#tax", {type:"words,chars"});
+
+    var bonus = mySplitText.chars;
+    var june = mySplitText2.chars;
+    var tax = mySplitText3.chars;
+
     tl = new TimelineLite();
 
     //FRAME 01/INTRO ------------------------------------------------
@@ -124,25 +132,37 @@ function startAnimation() {
     tl.to("#blue-shape", 1, {alpha:1, rotation: -90, scaleX: 1.3, scaleY: 1.3, x: -45, y: 100, ease: Power1.easeInOut}, ".3");
     tl.to("#mask-shape", 1, {rotation: 0, scaleX: 3.65, scaleY: 3.65, x: -1756, y: -1315, ease: Power3.easeInOut}, "1.1");
     tl.to("#blue-shape", 0.4, {rotation: -180, scaleX: 1.3, scaleY: 1.3, x: -290, y: 280, ease: Power2.easeIn}, "1.3");
-    //tl.to("#partnership-white-shape-small", 1.5, {x:107}, ".5");
+    tl.to("#partnership-white-shape-small", 1.5, {x:107}, ".5");
 
 
     //FRAME 02  ------------------------------------------------
     tl.add("frame02", 7);
 
-    tl.to("#messaging-frame-01", 0.8, {alpha: 0, y:0, ease: Power1.easeOut}, "frame02+=.3");
-    tl.from("#messaging-frame-02", 1.5, {alpha: 0, y:0, ease: Power1.easeInOut}, "frame02+=.3");
+    tl.to("#messaging-frame-01", 0.8, {alpha: 1, y:-14, ease: Power1.easeOut}, "frame02+=.3");
+    tl.from("#messaging-frame-01b", 0.8, {alpha: 0, y: 0, ease: Power1.easeInOut}, "frame02+=.3");
+    tl.staggerFrom(bonus, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame02+=0.7");
+
+
+    //FRAME 03  -------------------------------------------------
+    tl.add("frame03", 10);
+    tl.to("#messaging-frame-01", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
+    tl.to("#messaging-frame-01b", 1.2, {alpha: 0, y: '+=20', ease: Power1.easeInOut}, "frame03+=.3");
+    tl.from("#messaging-frame-03", 2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "frame03+=.5");
+    tl.staggerFrom(tax, 0.5, {alpha:0, x:-10, rotationY:360, transformOrigin:"50% 50%", ease:Sine.easeOut}, 0.05, "frame03+=1.3");
 
     //END FRAME  ------------------------------------------------
-    tl.add("endframe", 12);
+    tl.add("endframe", 14);
 
-    tl.to("#messaging-frame-02", 1.2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "endframe");
+    tl.to("#messaging-frame-03", 1.2, {alpha: 0, y: -20, ease: Power1.easeInOut}, "endframe");
     tl.from("#messaging-endframe", 2, {alpha: 0, y: 20, ease: Power1.easeInOut}, "endframe+=.6");
+    tl.call(countDown2, [900, 999, 000, ".points-copy2 .hundreds-countdown"], this, "endframe+=.6");
     tl.from("#cta-button", 2, {alpha: 0, y: 10, ease: Power2.easeOut}, "endframe+=1.6");
     tl.to("#red-grad-values", 3, {attr:{cx:364, cy:45, r:170}, ease:Power2.easeInOut}, "endframe-=1");
 
     // tl.to("#logos-container", 2, {y:20, ease:Power2.easeInOut}, "endframe+=.3");
-    tl.from(".logo-partner", 2, {autoAlpha:0, y:-10, ease:Power2.easeInOut}, "endframe+=.4");
+    tl.from(".logo-partner", 1.5, {autoAlpha:0, y:10, ease:Power1.easeInOut}, "endframe+=.75");
+    tl.to(".logo-qantas", 1.5, {y:20, x:6 , scale:1, ease:Power1.easeInOut}, "endframe+=.4");
+    tl.to("#partnership-white-shape-small", 1.5, {x:147, ease:Power1.easeInOut}, "endframe+=.4");
     // tl.to(".logo-qantas", 1.2, {scale:0.9, ease: Power1.easeInOut}, "endframe+=0.9");
 }
 
@@ -152,6 +172,7 @@ function countDown(startingPoint, limit, target, element) {
     var limit = parseInt(limit);
     var target = parseInt(target);
     var value;
+
 
     var si = setInterval(function(){
         if(i < limit) {
@@ -163,8 +184,45 @@ function countDown(startingPoint, limit, target, element) {
             value = i;
         }
         if(i === target) {
-            $(".hundreds-countdown").html("000")
-            $(".thousands-countdown").html("75")
+
+            $(".points-copy .hundreds-countdown").html("000")
+            $(".points-copy .thousands-countdown").html("100")
+
+            clearInterval(si)
+
+        }
+        if (i < 10) {
+
+            value = i;
+            value = "00" + i;
+        }
+        $(element).html(value)
+
+    }, 18)
+}
+
+function countDown2(startingPoint, limit, target, element) {
+
+    var i = startingPoint;
+    var limit = parseInt(limit);
+    var target = parseInt(target);
+    var value;
+
+
+    var si = setInterval(function(){
+        if(i < limit) {
+            i++;
+            value = i;
+        }
+        if (i === limit) {
+            i = 0;
+            value = i;
+        }
+        if(i === target) {
+
+            $(".points-copy2 .hundreds-countdown").html("000")
+            $(".points-copy2 .thousands-countdown").html("100")
+
             clearInterval(si)
 
         }

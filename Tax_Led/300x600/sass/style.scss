@@ -436,7 +436,7 @@ h4 {
 #cta-button {
     position: absolute;
     display: block;
-    left: 55px;
+    left: 70px;
     margin-top: 15px;
     z-index: 300;
 }
@@ -549,7 +549,7 @@ h4 {
 
 #red-gradient {
     position: absolute;
-    z-index: 100;
+    z-index: 111;
     left: 0;
     top: 0;
     width: 838px;
@@ -564,6 +564,28 @@ h4 {
     height: 600px;
     background-color: #d00914;
     z-index: 0;
+}
+
+#solid-red-base2 {
+    position: absolute;
+    height: 2100px;
+    width: 2200px;
+    top: -800px;
+    left: -1880px;
+    background-color: #d20000;
+    z-index: 110;
+
+    /*background: -moz-linear-gradient(left,  rgba(210,0,0,0) 0%, rgba(210,0,0,0) 14%, rgba(210,0,0,0.64) 21%, rgba(210,0,0,1) 25%, rgba(210,0,0,1) 100%);
+    background: -webkit-linear-gradient(left,  rgba(210,0,0,0) 0%,rgba(210,0,0,0) 14%,rgba(210,0,0,0.64) 21%,rgba(210,0,0,1) 25%,rgba(210,0,0,1) 100%);
+    background: linear-gradient(to right,  rgba(210,0,0,0) 0%,rgba(210,0,0,0) 14%,rgba(210,0,0,0.64) 21%,rgba(210,0,0,1) 25%,rgba(210,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00d20000', endColorstr='#d20000',GradientType=1 ); */
+
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(210,0,0,0) 0%, rgba(210,0,0,0) 33%, rgba(210,0,0,0.17) 34%, rgba(210,0,0,1) 39%, rgba(210,0,0,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(210,0,0,0) 0%,rgba(210,0,0,0) 33%,rgba(210,0,0,0.17) 34%,rgba(210,0,0,1) 39%,rgba(210,0,0,1) 100%);
+    background: radial-gradient(ellipse at center,  rgba(210,0,0,0) 0%,rgba(210,0,0,0) 33%,rgba(210,0,0,0.17) 34%,rgba(210,0,0,1) 39%,rgba(210,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00d20000', endColorstr='#d20000',GradientType=1 );
+
+
 }
 
 .copy-gradient {

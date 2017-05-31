@@ -161,6 +161,20 @@ h4 {
     // -webkit-font-smoothing: antialiased;
 }
 
+#video {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+    top: 0px;
+    left: 0px;
+    margin: auto;
+    z-index: 101;
+}
+
+video{
+  display: block;
+}
+
 #messaging-frame-01 {
     position: absolute;
     z-index: 200;
@@ -386,6 +400,7 @@ h4 {
 .logo-partner {
     position: absolute;
     width: 105px;
+    height: 25px;
     left: 148px;
     top: -2px;
 }
